@@ -1,4 +1,4 @@
-package body Laboratorio12 is
+package body Lab12 is
 
    ------------------------------------
    -- AUTHOR: BERGARETXE LOPEZ, LUKA --
@@ -9,8 +9,7 @@ package body Laboratorio12 is
    -------------------------
 
    procedure Clonar_y_Concatenar
-     (L1,L2: in T_Lista_Dinamica;
-      L: out T_Lista_Dinamica)
+     (L1, L2 : in T_Lista_Dinamica; L : out T_Lista_Dinamica)
    is
    begin
       if L1 = null then
@@ -23,7 +22,7 @@ package body Laboratorio12 is
             L := L.Sig;
          end loop;
          L.Sig := L2;
-         L := L1;
+         L     := L1;
       end if;
    end Clonar_y_Concatenar;
 
@@ -31,7 +30,7 @@ package body Laboratorio12 is
    -- Borrar --
    ------------
 
-   procedure Borrar (L: in out T_Lista_Dinamica; Num: Integer) is
+   procedure Borrar (L : in out T_Lista_Dinamica; Num : Integer) is
       a : T_Lista_Dinamica;
    begin
       if L /= null then
@@ -54,56 +53,56 @@ package body Laboratorio12 is
    ------------------
 
    procedure Interseccion
-     (L1,L2: in out T_Lista_Dinamica;
-      Comunes, No_Comunes: out T_Lista_Dinamica)
+     (L1, L2              : in out T_Lista_Dinamica;
+      Comunes, No_Comunes :    out T_Lista_Dinamica)
    is
       a1 : T_Lista_Dinamica;
       a2 : T_Lista_Dinamica;
    begin
-      Comunes := null;
+      Comunes    := null;
       No_Comunes := null;
       if L1 = null then
          No_Comunes := L2;
-         L2 := null;
+         L2         := null;
       elsif L2 = null then
          No_Comunes := L1;
-         L1 := null;
+         L1         := null;
       else
          while L1 /= null and L2 /= null loop
             if L1.Info = L2.Info then
                loop
                   if Comunes /= null then
                      a1.Sig := L1;
-                     a1 := a1.Sig;
+                     a1     := a1.Sig;
                   else
                      Comunes := L1;
-                     a1 := Comunes;
+                     a1      := Comunes;
                   end if;
                   L1 := L1.Sig;
                   exit when L1 = null or else L1.Info /= a1.Info;
                end loop;
                loop
                   a1.Sig := L2;
-                  a1 := a1.Sig;
-                  L2 := L2.Sig;
+                  a1     := a1.Sig;
+                  L2     := L2.Sig;
                   exit when L2 = null or else L2.Info /= a1.Info;
                end loop;
             elsif L1.Info < L2.Info then
                if No_Comunes /= null then
                   a2.Sig := L1;
-                  a2 := a2.Sig;
+                  a2     := a2.Sig;
                else
                   No_Comunes := L1;
-                  a2 := No_Comunes;
+                  a2         := No_Comunes;
                end if;
                L1 := L1.Sig;
             else
                if No_Comunes /= null then
                   a2.Sig := L2;
-                  a2 := a2.Sig;
+                  a2     := a2.Sig;
                else
                   No_Comunes := L2;
-                  a2 := No_Comunes;
+                  a2         := No_Comunes;
                end if;
                L2 := L2.Sig;
             end if;
@@ -133,8 +132,8 @@ package body Laboratorio12 is
    -- Son_iguales --
    -----------------
 
-   function Son_iguales (L1,L2: in T_Lista_Dinamica) return Boolean is
-      r : Boolean := TRUE;
+   function Son_iguales (L1, L2 : in T_Lista_Dinamica) return Boolean is
+      r  : Boolean          := True;
       a1 : T_Lista_Dinamica := L1;
       a2 : T_Lista_Dinamica := L2;
    begin
@@ -147,11 +146,11 @@ package body Laboratorio12 is
          end loop;
          if r then
             if a1.Sig = null xor a2.Sig = null then
-               r := FALSE;
+               r := False;
             end if;
          end if;
       elsif L1 /= null xor L2 /= null then
-         r := FALSE;
+         r := False;
       end if;
       return r;
    end Son_iguales;
@@ -160,7 +159,7 @@ package body Laboratorio12 is
    -- Simplificar1 --
    ------------------
 
-   procedure Simplificar1 (L: in out T_Lista_Puntos; Cuantos: out Natural) is
+   procedure Simplificar1 (L : in out T_Lista_Puntos; Cuantos : out Natural) is
       a : T_Lista_Puntos;
    begin
       Cuantos := 0;
@@ -171,7 +170,10 @@ package body Laboratorio12 is
             if L.Sig.Sig /= null then
                a := L;
                loop
-                  while a.Sig.Sig /= null and (abs(a.Sig.Info.X - a.Info.X) < 0.001 and abs(a.Sig.Info.Y - a.Info.Y) < 0.001) loop
+                  while a.Sig.Sig /= null and
+                    (abs (a.Sig.Info.X - a.Info.X) < 0.001 and
+                     abs (a.Sig.Info.Y - a.Info.Y) < 0.001)
+                  loop
                      a.Sig := a.Sig.Sig;
                   end loop;
                   a := a.Sig;
@@ -187,7 +189,7 @@ package body Laboratorio12 is
    -- Simplificar2 --
    ------------------
 
-   procedure Simplificar2 (L: in out T_lista_Puntos; Cuantos: out Natural) is
+   procedure Simplificar2 (L : in out T_Lista_Puntos; Cuantos : out Natural) is
       a : T_Lista_Puntos;
       j : Natural := 1;
    begin
@@ -201,7 +203,7 @@ package body Laboratorio12 is
                while a.Sig.Sig /= null loop
                   if j mod 4 = 0 then
                      Cuantos := Cuantos + 1;
-                     a := a.Sig;
+                     a       := a.Sig;
                   else
                      a.Sig := a.Sig.Sig;
                   end if;
@@ -217,36 +219,35 @@ package body Laboratorio12 is
    -------------------------
 
    procedure Crear_Arbol_Binario
-     (V:in T_Vector_Enteros;
-      A:out T_Arbol_Binario)
+     (V : in T_Vector_Enteros; A : out T_Arbol_Binario)
    is
-      i : Integer := V'First + 1;
+      i   : Integer := V'First + 1;
       pos : T_Arbol_Binario;
-      r : Boolean;
+      r   : Boolean;
    begin
-      if V'length >= 1 then
-         A := new T_Nodo_Arbol'(V(V'first), null, null);
+      if V'Length >= 1 then
+         A := new T_Nodo_Arbol'(V (V'First), null, null);
          if V'Length > 1 then
-            while i in V'range loop
+            while i in V'Range loop
                pos := A;
-               r := FALSE;
+               r   := False;
                loop
-                  if V(i) < pos.Info then
+                  if V (i) < pos.Info then
                      if pos.Menores /= null then
                         pos := pos.Menores;
                      else
-                        pos.Menores := new T_Nodo_Arbol'(V(i), null, null);
-                        r := TRUE;
+                        pos.Menores := new T_Nodo_Arbol'(V (i), null, null);
+                        r           := True;
                      end if;
-                  elsif V(i) > pos.Info then
+                  elsif V (i) > pos.Info then
                      if pos.Mayores /= null then
                         pos := pos.Mayores;
                      else
-                        pos.Mayores := new T_Nodo_Arbol'(V(i), null, null);
-                        r := TRUE;
+                        pos.Mayores := new T_Nodo_Arbol'(V (i), null, null);
+                        r           := True;
                      end if;
                   else
-                     r := TRUE;
+                     r := True;
                   end if;
                   exit when r;
                end loop;
@@ -256,4 +257,4 @@ package body Laboratorio12 is
       end if;
    end Crear_Arbol_Binario;
 
-end Laboratorio12;
+end Lab12;
