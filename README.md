@@ -10,9 +10,9 @@
 7. **Crear árbol binario.** Implementa el _procedimiento_ **Crear_arbol_binario** que, dado un vector de enteros, cree un árbol binario de la siguiente manera. Se mira el valor del entero de la raíz. Si el valor a insertar es menor que él, se introduce en el subárbol izquierdo y si no en el derecho (si es igual, se ignora). Si no hay subárbol izquierdo o derecho, se crea un nodo con el elemento a insertar y si no, se decide en qué rama hay que introducir el nuevo elemento de la misma manera que antes (menores a la izquierda y mayores a la derecha). Por ejemplo, si el vector contiene los valores (7 2 17 1 3 11 6 16 4 5 18 8). Del árbol vacío se crearía uno con solo el 7. Luego, el 17 se pondría colgando de la rama derecha (porque 17>7) y el 2 colgando de la rama izquierda (porque 2<7). Con los siguientes números se haría parecido: el 1 va por la rama izquierda del 7 y la izquierda del 2. El 3 seguiría la rama izquierda del 7 y la derecha del 2. Y así sucesivamente.
 
 <div align="center">
-  <img src="https://github.com/lukabergs/ia-pb-lab12/assets/52601751/e8f267ef-b31c-4000-92fa-caee913ec2cc" title="Fig. 1"><br/>↓<br/>
-  <img src="https://github.com/lukabergs/ia-pb-lab12/assets/52601751/14f01bfe-0296-4fb0-9e08-235a36a50bb1" title="Fig. 2"><br/>↓<br/>
-  <img src="https://github.com/lukabergs/ia-pb-lab12/assets/52601751/71710687-410a-4872-8958-7b8631f44765" title="Fig. 3"><br/>↓<br/>
-  <img src="https://github.com/lukabergs/ia-pb-lab12/assets/52601751/adcfade8-b23d-4847-b766-59f98ef71ef7" title="Fig. 4"><br/>↓<br/>
+  <img src="https://github.com/lukabergs/ia-pb-lab12/assets/52601751/e8f267ef-b31c-4000-92fa-caee913ec2cc" title="Fig. 1"><br/><br/>↓<br/><br/>
+  <img src="https://github.com/lukabergs/ia-pb-lab12/assets/52601751/14f01bfe-0296-4fb0-9e08-235a36a50bb1" title="Fig. 2"><br/><br/>↓<br/><br/>
+  <img src="https://github.com/lukabergs/ia-pb-lab12/assets/52601751/71710687-410a-4872-8958-7b8631f44765" title="Fig. 3"><br/><br/>↓<br/><br/>
+  <img src="https://github.com/lukabergs/ia-pb-lab12/assets/52601751/adcfade8-b23d-4847-b766-59f98ef71ef7" title="Fig. 4"><br/><br/>↓<br/><br/>
   <img src="https://github.com/lukabergs/ia-pb-lab12/assets/52601751/745b4fc5-ce96-4269-943f-bc65a2672fdb" title="Fig. 5">
 </div>
